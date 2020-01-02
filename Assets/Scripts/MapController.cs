@@ -4,8 +4,19 @@ using UnityEngine;
 
 public static class MapController {
 
-    private static List<GameObject>[,] objects = new List<GameObject>[Constants.width + 2, Constants.height + 2];
-    private static Dictionary<GameObject, Vector2Int> positions = new Dictionary<GameObject, Vector2Int>();
+    private static List<GameObject>[,] objects;
+    private static Dictionary<GameObject, Vector2Int> positions;
+
+    // Constructor to initialize lists
+    static MapController() {
+        objects = new List<GameObject>[Constants.width + 2, Constants.height + 2];
+        positions = new Dictionary<GameObject, Vector2Int>();
+        for (int x = 0; x <= Constants.width + 1; ++x) {
+            for (int y = 0; y <= Constants.height + 1; ++y) {
+                objects[x, y] = new List<GameObject>();
+            }
+        }
+    }
 
     // Need to loop through the playable area and find the walls
     public static void CaptureMap() {
