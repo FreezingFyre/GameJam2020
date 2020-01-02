@@ -2,125 +2,86 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridMover : MonoBehaviour
-{
+public abstract class GridMover : MonoBehaviour, GridCollider {
 
-    // Directions to use for movement
-    protected enum Direction {
-        Left,
-        Right,
-        Up,
-        Down,
-        None
-    }
+    // Members inherited from GridCollider that need to be implemented in the child,
+    // along with new handlers for this object
+    public abstract void ChildStart();
+    public abstract void ReachedCursorAction();
+    public abstract bool CanSpawnWith(GameObject other);
+    public abstract void HandleSpawn(GameObject other);
+    public abstract bool HandleCollision(GameObject other);
 
-    // Useful dictionaries for use with directions
-    protected Dictionary<Direction, Vector2> directions = new Dictionary<Direction, Vector2> {
-        { Direction.Left, new Vector2(-1.0f, 0.0f) },
-        { Direction.Right, new Vector2(1.0f, 0.0f) },
-        { Direction.Up, new Vector2(0.0f, 1.0f) },
-        { Direction.Down, new Vector2(0.0f, -1.0f) },
-        { Direction.None, new Vector2(0.0f, 0.0f) }
-    };
-    protected Dictionary<Direction, Direction> opposite = new Dictionary<Direction, Direction> {
-        { Direction.Left, Direction.Right },
-        { Direction.Right, Direction.Left },
-        { Direction.Up, Direction.Down },
-        { Direction.Down, Direction.Up },
-        { Direction.None, Direction.None }
-    };
+    // Data members
+    protected Vector2Int facing;
+    protected Vector2Int gridPos;
+    protected float moveSpeed;
 
     // Used for movement
-    private Rigidbody2D body;
-    private Direction movingDirection;
-    private Vector2 cursor;
+    private Rigidbody2D rigidBody;
+    private Vector2Int cursor;
+    private MapController controller;
 
-    // Movement speed
-    //[SerializeField] float moveSpeed = 0.08f;
-    protected float moveSpeed = 0.0f;
-
-    // Called when the object reaches its cursor position
-    public virtual void ReachedCursorAction() { }
+    [SerializeField] GameObject mapController;
 
     // Called when the object is created
-    public virtual void ChildStart() { }
-
-    // Start is called before the first frame update
-    public void Start() {
-        body = GetComponent<Rigidbody2D>();
-        movingDirection = Direction.None;
-        cursor = new Vector2(transform.position.x, transform.position.y);
+    void Start() {
+        rigidBody = GetComponent<Rigidbody2D>();
+        cursor = new Vector2Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
+        gridPos = cursor;
+        controller = mapController.GetComponent<MapController>();
+        controller.RegisterObject(gameObject, cursor);
         ChildStart();
     }
 
-    // Update is called once per frame
-    public void FixedUpdate() {
+    // Updates the position of the object to move towards the cursor
+    void FixedUpdate() {
 
-        Vector2 pos = new Vector2(transform.position.x, transform.position.y);
-        
-        // First case is if we are not currently moving
-        if (movingDirection == Direction.None) {
-            
-            // Return if we shouldn't be moving
-            if (cursor.x == pos.x && cursor.y == pos.y) {
-                return;
-            }
-
-            // Set moving direction accordingly
-            if (cursor.x != pos.x) {
-                movingDirection = (cursor.x > pos.x) ? Direction.Right : Direction.Left;
-            } else {
-                movingDirection = (cursor.y > pos.y) ? Direction.Up : Direction.Down;
-            }
-
+        // First case is if we're aligned with the gridPos and needn't move,
+        // we simply do nothing
+        if (Aligned() && cursor == gridPos) {
+            return;
         }
 
-        // We should move in the direction of the movingDirection
-        Vector3 cursorProj = Vector3.Project(cursor - pos, directions[movingDirection]);
-        Vector2 remainingDelta = new Vector2(cursorProj.x, cursorProj.y);
-        Vector2 moveDelta = moveSpeed * directions[movingDirection] * Time.deltaTime;
-
-        // Perform the movement
-        if (moveDelta.magnitude < remainingDelta.magnitude) {
-            body.MovePosition(pos + moveDelta);
-        } else {
-            body.MovePosition(pos + remainingDelta);
-            movingDirection = Direction.None;
-            if (pos + remainingDelta == cursor) {
-                ReachedCursorAction();
+        // If we're aligned right now, we need to set a new grid position to move to
+        if (Aligned()) {
+            Vector2Int delta = (cursor - gridPos);
+            if (delta.x != 0) {
+                delta.x = (int)Mathf.Sign(delta.x);
+            } else {
+                delta.y = (int)Mathf.Sign(delta.y);
             }
+            if (!controller.MoveObject(gameObject, delta)) {
+                cursor = gridPos;
+                ReachedCursorAction();
+                return;
+            }
+            gridPos += delta;
+        }
+
+        // Step to the grid position
+        Vector2 realPos = new Vector2(transform.position.x, transform.position.y);
+        Vector2 remainingDelta = gridPos - realPos;
+        Vector2 moveDelta = moveSpeed * Time.deltaTime * remainingDelta.normalized;
+        if (moveDelta.magnitude < remainingDelta.magnitude) {
+            rigidBody.MovePosition(realPos + moveDelta);
+        } else {
+            rigidBody.MovePosition(gridPos);
+            ReachedCursorAction();
         }
 
     }
 
     // Updates the location of the cursor by transforming it the given distance
-    // Stops if a wall is hit
-    public bool MoveCursor(Vector2 movement) {
+    public void MoveCursor(Vector2Int delta) {
+        cursor = gridPos;
+        cursor += delta;
+    }
 
-        // Reset cursor to be the closest integral position in direction of travel
-        if (movingDirection != Direction.None) {
-            cursor = new Vector2(transform.position.x, transform.position.y);
-            cursor += 0.5f * directions[movingDirection];
-            cursor = new Vector2(Mathf.Round(cursor.x), Mathf.Round(cursor.y));
-        }
-
-        // If we're reversing, set direction accordingly
-        if (movement.normalized == -1.0f * directions[movingDirection]) {
-            movingDirection = opposite[movingDirection];
-        }
-
-        // Add the change to the cursor so long as no walls are collided with
-        bool movedCursor = false;
-        while (movement.magnitude > 0.1f) {
-            Vector2 unitVec = movement.normalized;
-            if (Physics2D.OverlapPoint(cursor + unitVec, LayerMask.GetMask("Map"))) {
-                break;
-            }
-            movedCursor = true;
-            cursor += unitVec;
-            movement -= unitVec;
-        }
-        return movedCursor;
+    // Returns true if the real position is equal to gridPos
+    private bool Aligned() {
+        Vector3 gridPosFloat = new Vector3(gridPos.x, gridPos.y, 0.0f);
+        return transform.position.Equals(gridPosFloat);
     }
 
 }
