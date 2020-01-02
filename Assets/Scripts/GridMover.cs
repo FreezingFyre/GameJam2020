@@ -37,7 +37,7 @@ public class GridMover : MonoBehaviour
 
     // Movement speed
     //[SerializeField] float moveSpeed = 0.08f;
-    protected float moveSpeed = 0.08f;
+    protected float moveSpeed = 0.0f;
 
     // Called when the object reaches its cursor position
     public virtual void ReachedCursorAction() { }
@@ -97,14 +97,17 @@ public class GridMover : MonoBehaviour
     // Stops if a wall is hit
     public bool MoveCursor(Vector2 movement) {
 
-        //Debug.Log("Before");
         // Reset cursor to be the closest integral position in direction of travel
         if (movingDirection != Direction.None) {
             cursor = new Vector2(transform.position.x, transform.position.y);
             cursor += 0.5f * directions[movingDirection];
             cursor = new Vector2(Mathf.Round(cursor.x), Mathf.Round(cursor.y));
         }
-        //Debug.Log("After");
+
+        // If we're reversing, set direction accordingly
+        if (movement.normalized == -1.0f * directions[movingDirection]) {
+            movingDirection = opposite[movingDirection];
+        }
 
         // Add the change to the cursor so long as no walls are collided with
         bool movedCursor = false;

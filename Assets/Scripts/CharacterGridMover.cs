@@ -7,20 +7,25 @@ public class CharacterGridMover : GridMover
 {
 
     private Direction axisDirection;
+    private Direction prevDirection;
     private bool canMove;
 
     // Start is called before the first frame update
     public override void ChildStart() {
         axisDirection = Direction.None;
+        prevDirection = Direction.None;
         canMove = true;
+        moveSpeed = 4.0f;
     }
 
     // When the object reaches the cursor
     public override void ReachedCursorAction() {
         if (axisDirection != Direction.None) {
             canMove = !MoveCursor(directions[axisDirection]);
+            prevDirection = canMove ? Direction.None : axisDirection;
         } else {
             canMove = true;
+            prevDirection = Direction.None;
         }
     }
 
@@ -36,8 +41,9 @@ public class CharacterGridMover : GridMover
         } else {
             axisDirection = Direction.None;
         }
-        if (canMove && axisDirection != Direction.None) {
+        if ((canMove || axisDirection == opposite[prevDirection]) && axisDirection != Direction.None) {
             canMove = !MoveCursor(directions[axisDirection]);
+            prevDirection = canMove ? Direction.None : axisDirection;
         }
     }
 
