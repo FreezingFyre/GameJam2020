@@ -18,8 +18,8 @@ public static class Constants {
     public const int width = 21;
     public const int height = 13;
 
-    public const float autogenWallRate = 0.15f;
+    public const float autogenWallRate = 0.2f;
 
-    public const float playerSpeed = 4.0f;
+    public const float playerSpeed = 5.5f;
 
 }
