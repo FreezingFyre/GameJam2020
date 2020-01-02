@@ -20,17 +20,13 @@ public abstract class GridMover : MonoBehaviour, GridCollider {
     // Used for movement
     private Rigidbody2D rigidBody;
     private Vector2Int cursor;
-    private MapController controller;
-
-    [SerializeField] GameObject mapController;
 
     // Called when the object is created
     void Start() {
         rigidBody = GetComponent<Rigidbody2D>();
         cursor = new Vector2Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
         gridPos = cursor;
-        controller = mapController.GetComponent<MapController>();
-        controller.RegisterObject(gameObject, cursor);
+        MapController.RegisterObject(gameObject, cursor);
         ChildStart();
     }
 
@@ -51,7 +47,7 @@ public abstract class GridMover : MonoBehaviour, GridCollider {
             } else {
                 delta.y = (int)Mathf.Sign(delta.y);
             }
-            if (!controller.MoveObject(gameObject, delta)) {
+            if (!MapController.MoveObject(gameObject, delta)) {
                 cursor = gridPos;
                 ReachedCursorAction();
                 return;
