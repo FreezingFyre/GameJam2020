@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CharacterGridMover : GridMover {
+public class PlayerMover : GridMover {
 
     private Vector2Int axisDirection;
     private bool canMove;
@@ -11,7 +11,7 @@ public class CharacterGridMover : GridMover {
     // Start is called before the first frame update
     public override void ChildStart() {
         canMove = true;
-        moveSpeed = 4.0f;
+        moveSpeed = Constants.playerSpeed;
     }
 
     // When the object reaches the cursor
@@ -48,7 +48,6 @@ public class CharacterGridMover : GridMover {
         }
         if (canMove && axisDirection != Vector2Int.zero) {
             canMove = false;
-            Debug.Log("Moving " + axisDirection);
             MoveCursor(axisDirection);
         }
     }
