@@ -21,7 +21,7 @@ public class PushEffect : GridMover
 
     public override void ChildStart()
     {
-        MoveCursor(direction * distance);
+        //MoveCursor(direction * distance);
     }
 
     // When the object reaches the cursor
@@ -39,5 +39,14 @@ public class PushEffect : GridMover
     internal void SetMoveSpeed(float speed)
     {
         moveSpeed = speed;
+    }
+    public override bool CanSpawnWith(GameObject other) {
+        return true;
+    }
+    public override void HandleSpawn(GameObject other) {
+
+    }
+    public override bool HandleCollision(GameObject other) {
+        return true;
     }
 }
