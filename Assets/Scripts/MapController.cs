@@ -54,6 +54,9 @@ public class MapController : MonoBehaviour {
         // Only for testing purposes!
         Generate();
 
+        objects = new List<GameObject>[size.x + 2, size.y + 2];
+        positions = new Dictionary<GameObject, Vector2Int>();
+
         // Need to orient the camera to be able to view the whole playing field
         mainCamera.transform.position = new Vector3((size.x + 1) / 2.0f, (size.y + 1) / 2.0f, -10.0f);
         float screenRatio = Screen.width * 1.0f / Screen.height;
@@ -65,8 +68,6 @@ public class MapController : MonoBehaviour {
         }
 
         // Need to loop through the playable area and find the walls
-        objects = new List<GameObject>[size.x + 2, size.y + 2];
-        positions = new Dictionary<GameObject, Vector2Int>();
         Collider2D collision;
         Vector2Int probe = new Vector2Int();
         for (int x = 0; x <= size.x + 1; ++x) {
