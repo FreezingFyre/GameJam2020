@@ -6,6 +6,7 @@ public class Player1Sim : MonoBehaviour
 {
     private GameObject paint;
     private GameObject paintBomb;
+    private GameObject pushEffect;
     // Start is called before the first frame update
     void Start()
     {
