@@ -232,7 +232,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b97bd82e0e30345aec1d9ea006e69d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapSize: {x: 21, y: 15}
+  mapSize: {x: 15, y: 9}
+  obstacleRate: 0.15
   camera: {fileID: 519420031}
 --- !u!4 &547594219
 Transform:

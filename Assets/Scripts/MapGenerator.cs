@@ -6,6 +6,7 @@ public class MapGenerator : MonoBehaviour
 {
 
     [SerializeField] Vector2Int mapSize;
+    [SerializeField] float obstacleRate;
     [SerializeField] Camera camera;
 
     private GameObject border;
@@ -39,7 +40,7 @@ public class MapGenerator : MonoBehaviour
         // Randomly instantiate some obstacle blocks
         for (int x = 1; x < rightBorder; ++x) {
             for (int y = 1; y < topBorder; ++y) {
-                if (Random.Range(0.0f, 1.0f) < 0.1f && (x != 1 && y != 1)) {
+                if (Random.Range(0.0f, 1.0f) < obstacleRate && (x != 1 || y != 1)) {
                     Instantiate(border, new Vector3(x, y, 0.0f), Quaternion.identity);
                 } else {
                     Instantiate(floor, new Vector3(x, y, 0.0f), Quaternion.identity);

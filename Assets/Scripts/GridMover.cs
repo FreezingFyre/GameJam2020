@@ -113,7 +113,7 @@ public class GridMover : MonoBehaviour
         bool movedCursor = false;
         while (movement.magnitude > 0.1f) {
             Vector2 unitVec = movement.normalized;
-            if (Physics2D.OverlapPoint(cursor + unitVec)) {
+            if (Physics2D.OverlapPoint(cursor + unitVec, LayerMask.GetMask("Map"))) {
                 break;
             }
             movedCursor = true;
