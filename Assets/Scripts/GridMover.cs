@@ -37,7 +37,7 @@ public class GridMover : MonoBehaviour
 
     // Movement speed
     //[SerializeField] float moveSpeed = 0.08f;
-    protected float moveSpeed = 0.08f;
+    protected float moveSpeed = 0.0f;
 
     // Called when the object reaches its cursor position
     public virtual void ReachedCursorAction() { }

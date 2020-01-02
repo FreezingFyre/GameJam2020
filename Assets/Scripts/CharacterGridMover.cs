@@ -15,6 +15,7 @@ public class CharacterGridMover : GridMover
         axisDirection = Direction.None;
         prevDirection = Direction.None;
         canMove = true;
+        moveSpeed = 4.0f;
     }
 
     // When the object reaches the cursor
