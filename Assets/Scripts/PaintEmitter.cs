@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PaintEmitter : MonoBehaviour
 {
-    public GameObject Paint;
+    private GameObject paint;
     private Vector3 target;
     private float currTime;
     private Vector3 current;
@@ -15,18 +13,18 @@ public class PaintEmitter : MonoBehaviour
 
     void CreatePaint(Vector3 position)
     {
-        Instantiate(Paint, position, Quaternion.identity);
+        Instantiate(paint, position, Quaternion.identity);
     }
 
     void Start()
     {
-        DelayStart(Vector3.right * 5);
     }
 
-    void DelayStart(Vector3 target, float paintSpeed = .2f)
+    public void DelayStart(Vector3 target, GameObject paint, float paintSpeed = .2f)
     {
         this.target = target;
         this.paintSpeed = paintSpeed;
+        this.paint = paint;
         current = transform.position;
         deltaNorm = (target - current).normalized;
         currentStep = 0;
@@ -39,7 +37,7 @@ public class PaintEmitter : MonoBehaviour
         if(currTime > paintSpeed)
         {
             currentStep += 1;
-            if (currentStep > totalSteps) Destroy(this);
+            if (currentStep > totalSteps) Destroy(gameObject);
             else
             {
                 CreatePaint(current + (deltaNorm * currentStep));

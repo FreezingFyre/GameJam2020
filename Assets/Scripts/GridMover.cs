@@ -36,7 +36,8 @@ public class GridMover : MonoBehaviour
     private Vector2 cursor;
 
     // Movement speed
-    [SerializeField] float moveSpeed = 0.08f;
+    //[SerializeField] float moveSpeed = 0.08f;
+    protected float moveSpeed = 0.08f;
 
     // Called when the object reaches its cursor position
     public virtual void ReachedCursorAction() { }
@@ -77,7 +78,7 @@ public class GridMover : MonoBehaviour
         // We should move in the direction of the movingDirection
         Vector3 cursorProj = Vector3.Project(cursor - pos, directions[movingDirection]);
         Vector2 remainingDelta = new Vector2(cursorProj.x, cursorProj.y);
-        Vector2 moveDelta = moveSpeed * directions[movingDirection];
+        Vector2 moveDelta = moveSpeed * directions[movingDirection] * Time.deltaTime;
 
         // Perform the movement
         if (moveDelta.magnitude < remainingDelta.magnitude) {
