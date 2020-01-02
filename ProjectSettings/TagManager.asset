@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Map
   - Effects
+  - Paint
   layers:
   - Default
   - TransparentFX
@@ -15,31 +16,43 @@ TagManager:
   - UI
   - 
   - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - Paint
+  - 
+  - 
   - Map
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
   m_SortingLayers:
+  - name: Map
+    uniqueID: 2101458775
+    locked: 0
+  - name: Paint
+    uniqueID: 3122130213
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 964349045
+    locked: 0
+  - name: Effects
+    uniqueID: 2370097853
     locked: 0
