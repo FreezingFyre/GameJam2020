@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class MapController {
 
+    public static int playerCount = 0;
     private static List<GameObject>[,] objects;
     private static Dictionary<GameObject, Vector2Int> positions;
 
@@ -17,6 +18,7 @@ public static class MapController {
             }
         }
     }
+
 
     // Need to loop through the playable area and find the walls
     public static void CaptureMap() {

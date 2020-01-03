@@ -5,8 +5,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerMover : GridMover {
 
+    private int playerNumber;
+    private Constants.Color color;
     private Vector2Int axisDirection;
     private bool canMove;
+    private GameObject paint;
+    private GameObject paintBomb;
     public SpriteRenderer SpriteRenderer;
     public Animator Animator;
 
@@ -14,6 +18,15 @@ public class PlayerMover : GridMover {
     public override void ChildStart() {
         canMove = true;
         moveSpeed = Constants.playerSpeed;
+        paint = Resources.Load("Prefabs/Paint") as GameObject;
+        paintBomb = Resources.Load("Prefabs/PaintBomb") as GameObject;
+
+        var paintColor = Constants.paintColors[MapController.playerCount];
+        GetComponent<SpriteRenderer>().color = paintColor;
+        this.color = Constants.ColorToEnum[paintColor];
+
+        MapController.playerCount++;
+        playerNumber = MapController.playerCount;
     }
 
     // When the object reaches the cursor
@@ -37,7 +50,7 @@ public class PlayerMover : GridMover {
     }
 
     // OnMove sets the internal notion of which way the joystick is pointing
-    void OnMove(InputValue input) {
+    void OnMainPMove(InputValue input) {
         Vector2 axes = input.Get<Vector2>();
         
         if (axes.x != 0.0f || axes.y != 0.0f) {
@@ -66,6 +79,17 @@ public class PlayerMover : GridMover {
             canMove = false;
             MoveCursor(axisDirection);
         }
+    }
+
+    void OnMainPSquirt(InputValue input)
+    {
+
+    }
+
+    void OnMainPBomb(InputValue input)
+    {
+        PaintBomb bomb = Instantiate(paintBomb, transform.position, Quaternion.identity).GetComponent<PaintBomb>();
+        bomb.DelayStart(paint, 2, .05f, 4);
     }
 
 }
