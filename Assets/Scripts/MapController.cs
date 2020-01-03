@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class MapController {
 
+    public static int playerCount = 0;
     private static List<GameObject>[,] objects;
     private static Dictionary<GameObject, Vector2Int> positions;
 
