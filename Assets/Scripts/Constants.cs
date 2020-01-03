@@ -52,10 +52,10 @@ public static class Constants {
     };
 
 
-    public const int width = 21;
+    public const int width = 25;
     public const int height = 13;
 
-    public const float autogenWallRate = 0.0f;
+    public const float autogenWallRate = 0.2f;
 
     public const float playerSpeed = 5.5f;
     public const float bombPaintEmitterSpeed = 30.0f;
