@@ -2,14 +2,46 @@
     "name": "Controls",
     "maps": [
         {
-            "name": "Player",
-            "id": "8d8ac211-207e-417c-ba17-b54a06de923c",
+            "name": "PlayerMain",
+            "id": "27ad1d4a-3719-422d-9245-0c2573b2c4fa",
             "actions": [
                 {
-                    "name": "Move",
+                    "name": "MainPMove",
                     "type": "Value",
-                    "id": "9d253c19-d18f-48e7-894d-21a8fa95b92c",
+                    "id": "70afed12-4324-42ee-8db6-81bf6114cffd",
                     "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MainPLook",
+                    "type": "Value",
+                    "id": "215305b2-7504-45ce-b47b-15ecfd04208b",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MainPSquirt",
+                    "type": "Button",
+                    "id": "129680cb-f320-4fd4-8325-472e7eccc4af",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MainPBomb",
+                    "type": "Button",
+                    "id": "0cbe8979-905f-4a47-9435-6a05018241d4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MainPTrap",
+                    "type": "Button",
+                    "id": "59e5c89c-597b-4276-af38-9d5dd9a71ad8",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 }
@@ -17,12 +49,389 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "a94784ae-9856-467d-bbd8-09e111ca0c2e",
+                    "id": "978bfe49-cc26-4a3d-ab7b-7d7a29327403",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
-                    "processors": "StickDeadzone(min=0.3,max=1)",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "MainPMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1635d3fe-58b6-4ba9-a4e2-f4b964f6b5c8",
+                    "path": "<XInputController>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "MainPMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c1f7a91b-d0fd-4a62-997e-7fb9b69bf235",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "MainPLook",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3e5f5442-8668-4b27-a940-df99bad7e831",
+                    "path": "<XInputController>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "MainPLook",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "143bb1cd-cc10-4eca-a2f0-a3664166fe91",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "MainPSquirt",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "05f6913d-c316-48b2-a6bb-e225f14c7960",
+                    "path": "<XInputController>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "MainPSquirt",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7cf7271a-785f-4e48-8bee-4c9558f4f138",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "MainPSquirt",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "184efa30-047b-45ff-ab55-3c67d13e0308",
+                    "path": "<Keyboard>/#(A)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "MainPSquirt",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "29e33a53-9684-4a47-9a57-b9f946ee7a31",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "MainPBomb",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6447d7f2-b007-4ef3-bc21-156f2a6e302b",
+                    "path": "<XInputController>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "MainPBomb",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "110aa5ec-751f-402f-a0ec-6d2c85c0ca9e",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "MainPTrap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b460c053-87b2-4771-bac1-f1b62a4f8b71",
+                    "path": "<XInputController>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "MainPTrap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "PlayerRightSide",
+            "id": "79f85bd4-296a-47fa-83d3-ecc6e7306829",
+            "actions": [
+                {
+                    "name": "RightPMove",
+                    "type": "Value",
+                    "id": "2ab3ebe3-e3ec-402f-bf78-e351c1e0655c",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RightPSquirt",
+                    "type": "Button",
+                    "id": "f1f67136-abc3-4ee0-a186-0dccebdc5e3b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RightPBomb",
+                    "type": "Button",
+                    "id": "cd5acfaf-0932-46ba-908c-69e5b5aa271b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RightPTrap",
+                    "type": "Button",
+                    "id": "7b1a93e6-e7d4-4db9-af0c-ad570e3fe6d5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "651e78c4-0cc0-46b6-ada3-d7b7b0abd5bf",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "RightPMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a8220016-eafe-4c70-956c-5eab0b27df18",
+                    "path": "<Joystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "RightPMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cd178859-a5eb-40c8-ac95-324a787866a0",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "RightPSquirt",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f00b5f4c-05a3-4117-9fe2-aace22165e57",
+                    "path": "<XInputController>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "RightPSquirt",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e80c3459-7b39-45c1-82d0-ffaba3100490",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "RightPBomb",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "111406b8-a048-4c8e-a623-73ea791c8a4b",
+                    "path": "<XInputController>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "RightPBomb",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2a605676-6c2b-482a-b791-d1a638975fb2",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "RightPTrap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c8bc833c-490b-496d-8326-5cf2a53a967d",
+                    "path": "<XInputController>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "RightPTrap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "PlayerLeftSide",
+            "id": "2b1b79da-cf08-4a4f-aff7-bc620c0b312a",
+            "actions": [
+                {
+                    "name": "LeftPMove",
+                    "type": "Value",
+                    "id": "f707b59c-0416-4c8c-b7ef-9abb4a18d978",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "LeftPSquirt",
+                    "type": "Value",
+                    "id": "adca4a70-2aa1-4aa1-8b82-10e37c029a2f",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "LeftPBomb",
+                    "type": "Button",
+                    "id": "53f02a87-4e7c-4866-9a91-bc7b0ce30f8a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "LeftPTrap",
+                    "type": "Button",
+                    "id": "2908cdcf-4e18-477b-9b63-ab4106666cf2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "901be5f5-20d5-4fa2-9ab7-7ea51ab0214d",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "LeftPMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fe118428-6987-4d24-af2e-4feddf1c6433",
+                    "path": "<Joystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "LeftPMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6f733505-79f2-47cb-94a2-f1523999a2b6",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "LeftPSquirt",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "061972f8-87fb-44e1-91f6-545d2bf83b48",
+                    "path": "<XInputController>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "LeftPSquirt",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fb6b536a-502d-4c14-99a4-39359d064382",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "LeftPBomb",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0085759b-e722-40f6-a043-d86afbb7d960",
+                    "path": "<XInputController>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "LeftPBomb",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f658f84f-8c2c-40b7-8091-9c863cb918ca",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "LeftPTrap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c1dc2192-f328-4d94-a8c9-fbb2f36b1552",
+                    "path": "<XInputController>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "LeftPTrap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -40,5 +449,66 @@
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "Keyboard&Mouse",
+            "bindingGroup": "Keyboard&Mouse",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Gamepad",
+            "bindingGroup": "Gamepad",
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Touch",
+            "bindingGroup": "Touch",
+            "devices": [
+                {
+                    "devicePath": "<Touchscreen>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Joystick",
+            "bindingGroup": "Joystick",
+            "devices": [
+                {
+                    "devicePath": "<Joystick>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "XR",
+            "bindingGroup": "XR",
+            "devices": [
+                {
+                    "devicePath": "<XRController>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
 }
