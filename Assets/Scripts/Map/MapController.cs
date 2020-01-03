@@ -82,4 +82,16 @@ public static class MapController {
 
     }
 
+    public static Constants.Color PosColor(Vector2Int pos) {
+        Constants.Color color = Constants.Color.NONE;
+        foreach (GameObject obj in objects[pos.x, pos.y]) {
+            Paint onTile = obj.GetComponent<Paint>();
+            if (onTile != null) {
+                color = onTile.color;
+                break;
+            }
+        }
+        return color;
+    }
+
 }

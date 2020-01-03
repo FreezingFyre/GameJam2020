@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bomb : GridMover {
 
     // Member variables
-    private Constants.Color color;
+    public Constants.Color color;
     private float fuse;
     private int size;
     private float currTime;
@@ -44,10 +44,22 @@ public class Bomb : GridMover {
     // What to do when this object collides with other
     public override bool HandleCollision(GameObject other, Vector2Int pos) {
         if (other.tag == "Wall" || other.tag == "Player" || other.tag == "Bomb") {
+            sliding = Vector2Int.zero;
             return false;
+        } else if (other.tag == "Paint") {
+            if (other.GetComponent<Paint>().color != color) {
+                sliding = Vector2Int.zero;
+            }
         }
         // TODO: Implement collisions
         return true;
+    }
+
+    public void Push(Vector2Int direction) {
+        if (MapController.PosColor(gridPos) == color) {
+            sliding = direction;
+            MoveCursor(direction);
+        }
     }
 
     // Initializes this PaintBomb's variables after construction

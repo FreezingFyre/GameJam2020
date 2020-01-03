@@ -40,7 +40,7 @@ public class PushEffect : GridMover {
             player.MoveCursor(direction * 2);
             return false;
         } else if (other.tag == "Bomb") {
-
+            other.GetComponent<Bomb>().Push(direction);
             return false;
         } else if (other.tag == "Spike") {
 
