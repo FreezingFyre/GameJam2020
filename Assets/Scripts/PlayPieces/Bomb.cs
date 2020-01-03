@@ -57,6 +57,9 @@ public class Bomb : GridMover {
         size = size_;
         currTime = 0;
         moveSpeed = Constants.bombSlidingSpeed;
+
+        GetComponent<SpriteRenderer>().color = Constants.EnumToColor[color];
+
         paintEmitter = Resources.Load("Prefabs/PaintEmitter") as GameObject;
         pushEffect = Resources.Load("Prefabs/PushEffect") as GameObject;
         sliding = Vector2Int.zero;

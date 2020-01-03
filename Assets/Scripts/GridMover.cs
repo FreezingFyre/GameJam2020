@@ -27,7 +27,10 @@ public abstract class GridMover : MonoBehaviour {
         rigidBody = GetComponent<Rigidbody2D>();
         cursor = new Vector2Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
         gridPos = cursor;
-        MapController.RegisterObject(gameObject, cursor);
+        if (!MapController.RegisterObject(gameObject, cursor)) {
+            Destroy(gameObject);
+            return;
+        }
         ChildStart();
     }
 

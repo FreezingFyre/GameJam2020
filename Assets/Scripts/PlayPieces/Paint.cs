@@ -37,6 +37,8 @@ public class Paint : GridMover {
         color = color_;
         if (color == Constants.Color.NONE) {
             gameObject.GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, 0.0f); ;
+        } else {
+            GetComponent<SpriteRenderer>().color = Constants.EnumToColor[color];
         }
     }
 

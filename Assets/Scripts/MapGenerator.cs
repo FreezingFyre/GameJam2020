@@ -54,8 +54,8 @@ public class MapGenerator : MonoBehaviour {
             mainCamera.orthographicSize = (Constants.height + 2) / 2.0f;
         }
 
-        var bomb = Instantiate(Resources.Load("Prefabs/Bomb") as GameObject, new Vector3(5,5,0), Quaternion.identity).GetComponent<Bomb>();
-        bomb.Init(Constants.Color.BLUE, 3.0f, 6);
+        //var bomb = Instantiate(Resources.Load("Prefabs/Bomb") as GameObject, new Vector3(5,5,0), Quaternion.identity).GetComponent<Bomb>();
+        //bomb.Init(Constants.Color.BLUE, 3.0f, 6);
 
     }
 

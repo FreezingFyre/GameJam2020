@@ -6,7 +6,7 @@
             "id": "27ad1d4a-3719-422d-9245-0c2573b2c4fa",
             "actions": [
                 {
-                    "name": "MainPMove",
+                    "name": "Move",
                     "type": "Value",
                     "id": "70afed12-4324-42ee-8db6-81bf6114cffd",
                     "expectedControlType": "Vector2",
@@ -14,7 +14,15 @@
                     "interactions": ""
                 },
                 {
-                    "name": "MainPLook",
+                    "name": "StoppedLook",
+                    "type": "Value",
+                    "id": "edd0e421-820b-4428-bc56-049346c0abd6",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Look",
                     "type": "Value",
                     "id": "215305b2-7504-45ce-b47b-15ecfd04208b",
                     "expectedControlType": "Vector2",
@@ -22,7 +30,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "MainPSquirt",
+                    "name": "Shoot",
                     "type": "Button",
                     "id": "129680cb-f320-4fd4-8325-472e7eccc4af",
                     "expectedControlType": "Button",
@@ -30,15 +38,15 @@
                     "interactions": ""
                 },
                 {
-                    "name": "MainPBomb",
+                    "name": "Bomb",
                     "type": "Button",
                     "id": "0cbe8979-905f-4a47-9435-6a05018241d4",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press"
                 },
                 {
-                    "name": "MainPTrap",
+                    "name": "Trap",
                     "type": "Button",
                     "id": "59e5c89c-597b-4276-af38-9d5dd9a71ad8",
                     "expectedControlType": "",
@@ -52,9 +60,9 @@
                     "id": "978bfe49-cc26-4a3d-ab7b-7d7a29327403",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "StickDeadzone(min=0.85,max=0.925)",
                     "groups": ";Gamepad",
-                    "action": "MainPMove",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -63,9 +71,9 @@
                     "id": "1635d3fe-58b6-4ba9-a4e2-f4b964f6b5c8",
                     "path": "<XInputController>/leftStick",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "StickDeadzone(min=0.85,max=0.925)",
                     "groups": "Joystick",
-                    "action": "MainPMove",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -74,9 +82,9 @@
                     "id": "c1f7a91b-d0fd-4a62-997e-7fb9b69bf235",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "StickDeadzone(min=0.85,max=0.925)",
                     "groups": ";Gamepad",
-                    "action": "MainPLook",
+                    "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -85,9 +93,9 @@
                     "id": "3e5f5442-8668-4b27-a940-df99bad7e831",
                     "path": "<XInputController>/rightStick",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "StickDeadzone(min=0.85,max=0.925)",
                     "groups": "Joystick",
-                    "action": "MainPLook",
+                    "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -98,7 +106,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "MainPSquirt",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -109,29 +117,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Joystick",
-                    "action": "MainPSquirt",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7cf7271a-785f-4e48-8bee-4c9558f4f138",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MainPSquirt",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "184efa30-047b-45ff-ab55-3c67d13e0308",
-                    "path": "<Keyboard>/#(A)",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "MainPSquirt",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -142,7 +128,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "MainPBomb",
+                    "action": "Bomb",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -150,10 +136,10 @@
                     "name": "",
                     "id": "6447d7f2-b007-4ef3-bc21-156f2a6e302b",
                     "path": "<XInputController>/leftTrigger",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "Joystick",
-                    "action": "MainPBomb",
+                    "action": "Bomb",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -161,10 +147,10 @@
                     "name": "",
                     "id": "110aa5ec-751f-402f-a0ec-6d2c85c0ca9e",
                     "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "MainPTrap",
+                    "action": "Trap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -172,10 +158,32 @@
                     "name": "",
                     "id": "b460c053-87b2-4771-bac1-f1b62a4f8b71",
                     "path": "<XInputController>/rightShoulder",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "Joystick",
-                    "action": "MainPTrap",
+                    "action": "Trap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7f6cbeff-e14a-4213-9377-05076dd3b756",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "StickDeadzone(min=0.35,max=0.925)",
+                    "groups": ";Gamepad",
+                    "action": "StoppedLook",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "650a6ef0-fb7a-4acd-ae62-7ab7ae06adba",
+                    "path": "<XInputController>/leftStick",
+                    "interactions": "",
+                    "processors": "StickDeadzone(min=0.35,max=0.925)",
+                    "groups": "Joystick",
+                    "action": "StoppedLook",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
