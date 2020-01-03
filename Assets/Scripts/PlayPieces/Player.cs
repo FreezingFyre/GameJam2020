@@ -18,6 +18,11 @@ public class Player : GridMover {
     bool facingOverride;
     private int playerNumber;
     private GameObject paintBomb;
+    private GameObject paintEmitter;
+    private float gunHoldTime;
+    private bool gunHolding;
+    ParticleSystem.MainModule mainPs;
+    private float bombDelay;
     private float health = 100f;
 
     public float Health { get { return health; } set { } }
@@ -32,10 +37,16 @@ public class Player : GridMover {
         moveSpeed = Constants.playerSpeed;
         facingOverride = false;
         paintBomb = Resources.Load("Prefabs/Bomb") as GameObject;
+        paintEmitter = Resources.Load("Prefabs/PaintEmitter") as GameObject;
+        gunHoldTime = 0.0f;
+        gunHolding = false;
+        mainPs = GetComponent<ParticleSystem>().main;
+        GetComponent<ParticleSystem>().Stop();
 
         var paintColor = Constants.paintColors[MapController.playerCount];
         GetComponent<SpriteRenderer>().color = paintColor;
         color = Constants.ColorToEnum[paintColor];
+        bombDelay = Constants.bombDelay;
 
         MapController.playerCount++;
         playerNumber = MapController.playerCount;
@@ -47,6 +58,7 @@ public class Player : GridMover {
     // When the object reaches the cursor
     public override void ReachedCursorAction() {
         if (sliding) {
+            ModifyHealth(Constants.paintDamage);
             MoveCursor(movingDirection);
         } else if (axisDirection != Vector2Int.zero) {
             movingDirection = axisDirection;
@@ -132,9 +144,37 @@ public class Player : GridMover {
         return;
     }
 
-    public void OnShoot(InputValue input)
+    private void Update() {
+        bombDelay += Time.deltaTime;
+        if (gunHolding) {
+            gunHoldTime += Time.deltaTime;
+            int units = Mathf.FloorToInt(gunHoldTime / Constants.secondsPerGunUnit);
+            units = Mathf.Min(units, Constants.maxGunUnit);
+            mainPs.startSize = 0.1f * units;
+            if (units == Constants.maxGunUnit) {
+                mainPs.startColor = Constants.EnumToColor[color];
+            }
+        }
+    }
+
+    public void OnShootPress(InputValue input)
     {
-        return;
+        gunHolding = true;
+        mainPs.startColor = Color.white;
+        mainPs.startSize = 0.0f;
+        GetComponent<ParticleSystem>().Play();
+    }
+
+    public void OnShootRelease(InputValue input) {
+        gunHolding = false;
+        GetComponent<ParticleSystem>().Stop();
+        int units = Mathf.FloorToInt(gunHoldTime / Constants.secondsPerGunUnit);
+        units = Mathf.Min(units, Constants.maxGunUnit);
+        if (units > 0) {
+            PaintEmitter emitter = Instantiate(paintEmitter, (Vector2)(gridPos + facing), Quaternion.identity).GetComponent<PaintEmitter>();
+            emitter.Init(color, units, facing, Constants.bombPaintEmitterSpeed);
+        }
+        gunHoldTime = 0.0f;
     }
 
     public void OnLook(InputValue input) {
@@ -153,8 +193,11 @@ public class Player : GridMover {
     }
 
     public void OnBomb(InputValue input) {
-        Bomb bomb = Instantiate(paintBomb, (Vector2)(gridPos + facing), Quaternion.identity).GetComponent<Bomb>();
-        bomb.Init(color, Constants.bombFuse, Constants.bombDistance);
+        if (bombDelay >= Constants.bombDelay) {
+            bombDelay = 0.0f;
+            Bomb bomb = Instantiate(paintBomb, (Vector2)(gridPos + facing), Quaternion.identity).GetComponent<Bomb>();
+            bomb.Init(color, Constants.bombFuse, Constants.bombDistance);
+        }
     }
 
     Vector2Int AxesToDirection(InputValue input) {

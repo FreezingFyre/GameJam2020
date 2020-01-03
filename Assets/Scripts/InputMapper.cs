@@ -54,11 +54,18 @@ public class InputMapper : MonoBehaviour
             if (player != null) player.GetComponent<Player>().OnLook(input);
         }
     }
-    void OnShoot(InputValue input)
+    void OnShootPress(InputValue input)
     {
         foreach (var player in playerChildren)
         {
-            if (player != null) player.GetComponent<Player>().OnShoot(input);
+            if (player != null) player.GetComponent<Player>().OnShootPress(input);
+        }
+    }
+    void OnShootRelease(InputValue input)
+    {
+        foreach (var player in playerChildren)
+        {
+            if (player != null) player.GetComponent<Player>().OnShootRelease(input);
         }
     }
     void OnBomb(InputValue input)
@@ -87,9 +94,13 @@ public class InputMapper : MonoBehaviour
     {
         if (playerChildren[1] != null) playerChildren[1].GetComponent<Player>().OnStoppedLook(input);
     }
-    void OnRightShoot(InputValue input)
+    void OnRightShootPress(InputValue input)
     {
-        if (playerChildren[1] != null) playerChildren[1].GetComponent<Player>().OnShoot(input);
+        if (playerChildren[1] != null) playerChildren[1].GetComponent<Player>().OnShootPress(input);
+    }
+    void OnRightShootRelease(InputValue input)
+    {
+        if (playerChildren[1] != null) playerChildren[1].GetComponent<Player>().OnShootRelease(input);
     }
     void OnRightBomb(InputValue input)
     {
@@ -109,9 +120,13 @@ public class InputMapper : MonoBehaviour
     {
         if (playerChildren[0] != null) playerChildren[0].GetComponent<Player>().OnStoppedLook(input);
     }
-    void OnLeftShoot(InputValue input)
+    void OnLeftShootPress(InputValue input)
     {
-        if (playerChildren[0] != null) playerChildren[0].GetComponent<Player>().OnShoot(input);
+        if (playerChildren[0] != null) playerChildren[0].GetComponent<Player>().OnShootPress(input);
+    }
+    void OnLeftShootRelease(InputValue input)
+    {
+        if (playerChildren[0] != null) playerChildren[0].GetComponent<Player>().OnShootRelease(input);
     }
     void OnLeftBomb(InputValue input)
     {

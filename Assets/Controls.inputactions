@@ -30,9 +30,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Shoot",
+                    "name": "ShootPress",
                     "type": "Button",
                     "id": "129680cb-f320-4fd4-8325-472e7eccc4af",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "ShootRelease",
+                    "type": "Button",
+                    "id": "4031456e-9364-4a38-8d04-263cc66c2c1c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -103,10 +111,10 @@
                     "name": "",
                     "id": "143bb1cd-cc10-4eca-a2f0-a3664166fe91",
                     "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
+                    "interactions": "Press(pressPoint=0.2)",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Shoot",
+                    "action": "ShootPress",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -114,10 +122,10 @@
                     "name": "",
                     "id": "05f6913d-c316-48b2-a6bb-e225f14c7960",
                     "path": "<XInputController>/rightTrigger",
-                    "interactions": "",
+                    "interactions": "Press(pressPoint=0.2)",
                     "processors": "",
                     "groups": "Joystick",
-                    "action": "Shoot",
+                    "action": "ShootPress",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -186,6 +194,28 @@
                     "action": "StoppedLook",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d078d47d-5c99-414b-94db-b3b7981a6828",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "Press(pressPoint=0.2,behavior=1)",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "ShootRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a94f1f19-31c2-4333-ae0c-9abd7771b82e",
+                    "path": "<XInputController>/rightTrigger",
+                    "interactions": "Press(pressPoint=0.2,behavior=1)",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "ShootRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -210,9 +240,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "RightShoot",
+                    "name": "RightShootPress",
                     "type": "Button",
                     "id": "bf2227e9-0d51-4f1e-aae8-ece869b0aa14",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RightShootRelease",
+                    "type": "Button",
+                    "id": "2c34b2f2-09d6-48f6-b5b3-fb665783f44f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -250,9 +288,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "LeftShoot",
+                    "name": "LeftShootPress",
                     "type": "Value",
                     "id": "5648b07d-ba8d-4131-9552-4f3ac7d9636f",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "LeftShootRelease",
+                    "type": "Value",
+                    "id": "19c127f4-9e02-40f9-a37b-4f05beae46cc",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
@@ -411,10 +457,10 @@
                     "name": "",
                     "id": "94929144-8c20-4122-a546-ced955194992",
                     "path": "<Gamepad>/dpad",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "LeftShoot",
+                    "action": "LeftShootPress",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -422,10 +468,10 @@
                     "name": "",
                     "id": "a08c0d17-b01b-4822-b42d-2acdf5cb6ef7",
                     "path": "<XInputController>/dpad",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "Joystick",
-                    "action": "LeftShoot",
+                    "action": "LeftShootPress",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -433,10 +479,10 @@
                     "name": "",
                     "id": "42e1d449-7def-45bd-a642-d68cceef1cb4",
                     "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "RightShoot",
+                    "action": "RightShootPress",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -444,10 +490,10 @@
                     "name": "",
                     "id": "4e56fcd2-e3ed-463c-ba3b-2ae98ab0668e",
                     "path": "<XInputController>/buttonEast",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "Joystick",
-                    "action": "RightShoot",
+                    "action": "RightShootPress",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -492,6 +538,50 @@
                     "processors": "StickDeadzone(min=0.35,max=0.925)",
                     "groups": "Joystick",
                     "action": "LeftStoppedLook",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1f1bfe4d-d782-4d8c-9007-07747c820a6c",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "RightShootRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "75fa656b-f9a1-4a3d-b342-3786c24f811a",
+                    "path": "<XInputController>/buttonEast",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "RightShootRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d0589af6-7d50-4b2c-9919-749b9e95903d",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "LeftShootRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6172df42-9031-4b39-8395-1d81314c4916",
+                    "path": "<XInputController>/dpad",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "LeftShootRelease",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
