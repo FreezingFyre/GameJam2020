@@ -19,11 +19,15 @@ public class InputMapper : MonoBehaviour
         {
             playerInput.currentActionMap = playerInput.actions.FindActionMap("PlayerSplit");
         }
-
-        foreach(var child in children)
+        var canvas = GameObject.FindGameObjectWithTag("UIHealthCanvas").transform;
+        var HealthBar = Resources.Load("Prefabs/HealthBar") as GameObject;
+        foreach (var child in children)
         {
             var player = Instantiate(playerPrefab, new Vector3(Constants.playerSpawns[child].x, Constants.playerSpawns[child].y , 0), Quaternion.identity);
             player.GetComponent<Player>().color = Constants.ColorToEnum[Constants.paintColors[child]];
+            var healthBar = Instantiate(HealthBar, Constants.healthBarSpawns[child], Quaternion.identity);
+            healthBar.GetComponent<HealthBar>().Player = player;
+            healthBar.transform.SetParent(canvas);
             playerChildren.Add(player);
         }
     }
@@ -33,102 +37,104 @@ public class InputMapper : MonoBehaviour
         
         foreach(var player in playerChildren)
         {
-            player.GetComponent<Player>().OnMove(input);
+            if (player != null) player.GetComponent<Player>().OnMove(input.Get<Vector2>());
         }
     }
     void OnStoppedLook(InputValue input)
     {
         foreach (var player in playerChildren)
         {
-            player.GetComponent<Player>().OnStoppedLook(input);
+            if (player != null) player.GetComponent<Player>().OnStoppedLook(input);
         }
     }
     void OnLook(InputValue input)
     {
         foreach (var player in playerChildren)
         {
-            player.GetComponent<Player>().OnLook(input);
+            if (player != null) player.GetComponent<Player>().OnLook(input);
         }
     }
     void OnShootPress(InputValue input)
     {
         foreach (var player in playerChildren)
         {
-            player.GetComponent<Player>().OnShootPress(input);
+            if (player != null) player.GetComponent<Player>().OnShootPress(input);
         }
     }
     void OnShootRelease(InputValue input)
     {
         foreach (var player in playerChildren)
         {
-            player.GetComponent<Player>().OnShootRelease(input);
+            if (player != null) player.GetComponent<Player>().OnShootRelease(input);
         }
     }
     void OnBomb(InputValue input)
     {
         foreach (var player in playerChildren)
         {
-            player.GetComponent<Player>().OnBomb(input);
+            if (player != null) player.GetComponent<Player>().OnBomb(input);
         }
     }
     void OnTrap(InputValue input)
     {
         foreach (var player in playerChildren)
         {
-            player.GetComponent<Player>().OnTrap(input);
+            if (player != null) player.GetComponent<Player>().OnTrap(input);
         }
     }
 
 
     void OnRightMove(InputValue input)
     {
-        playerChildren[1].GetComponent<Player>().OnMove(input);
+        var axes = input.Get<Vector2>();
+        var flippedAxes = new Vector2(axes.y, -axes.x);
+        if (playerChildren[1] != null) playerChildren[1].GetComponent<Player>().OnMove(flippedAxes);
     }
     void OnRightStoppedLook(InputValue input)
     {
-        playerChildren[1].GetComponent<Player>().OnStoppedLook(input);
+        if (playerChildren[1] != null) playerChildren[1].GetComponent<Player>().OnStoppedLook(input);
     }
     void OnRightShootPress(InputValue input)
     {
-        playerChildren[1].GetComponent<Player>().OnShootPress(input);
+        if (playerChildren[1] != null) playerChildren[1].GetComponent<Player>().OnShootPress(input);
     }
     void OnRightShootRelease(InputValue input)
     {
-        playerChildren[1].GetComponent<Player>().OnShootRelease(input);
+        if (playerChildren[1] != null) playerChildren[1].GetComponent<Player>().OnShootRelease(input);
     }
     void OnRightBomb(InputValue input)
     {
-        playerChildren[1].GetComponent<Player>().OnBomb(input);
+        if (playerChildren[1] != null) playerChildren[1].GetComponent<Player>().OnBomb(input);
     }
     void OnRightTrap(InputValue input)
     {
-        playerChildren[1].GetComponent<Player>().OnTrap(input);
+        if (playerChildren[1] != null) playerChildren[1].GetComponent<Player>().OnTrap(input);
     }
 
 
     void OnLeftMove(InputValue input)
     {
-        playerChildren[0].GetComponent<Player>().OnMove(input);
+        if (playerChildren[0] != null) playerChildren[0].GetComponent<Player>().OnMove(input.Get<Vector2>());
     }
     void OnLeftStoppedLook(InputValue input)
     {
-        playerChildren[0].GetComponent<Player>().OnStoppedLook(input);
+        if (playerChildren[0] != null) playerChildren[0].GetComponent<Player>().OnStoppedLook(input);
     }
     void OnLeftShootPress(InputValue input)
     {
-        playerChildren[0].GetComponent<Player>().OnShootPress(input);
+        if (playerChildren[0] != null) playerChildren[0].GetComponent<Player>().OnShootPress(input);
     }
     void OnLeftShootRelease(InputValue input)
     {
-        playerChildren[0].GetComponent<Player>().OnShootRelease(input);
+        if (playerChildren[0] != null) playerChildren[0].GetComponent<Player>().OnShootRelease(input);
     }
     void OnLeftBomb(InputValue input)
     {
-        playerChildren[0].GetComponent<Player>().OnBomb(input);
+        if (playerChildren[0] != null) playerChildren[0].GetComponent<Player>().OnBomb(input);
     }
     void OnLeftTrap(InputValue input)
     {
-        playerChildren[0].GetComponent<Player>().OnTrap(input);
+        if (playerChildren[0] != null) playerChildren[0].GetComponent<Player>().OnTrap(input);
     }
 
 }

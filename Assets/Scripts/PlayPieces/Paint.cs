@@ -25,6 +25,14 @@ public class Paint : GridMover {
         if (other.tag == "Paint") {
             Destroy(other);
         }
+        //if (other.tag == "Player")
+        //{
+        //    var player = GetComponent<Player>();
+        //    if(color != Constants.Color.NONE && color != player.color)
+        //    {
+        //        player.ModifyHealth(Constants.paintDamage);
+        //    }
+        //}
     }
 
     // What to do when this object collides with other
