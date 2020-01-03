@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class GridMover : MonoBehaviour, GridCollider {
+public abstract class GridMover : MonoBehaviour {
 
     // Members inherited from GridCollider that need to be implemented in the child,
     // along with new handlers for this object
     public abstract void ChildStart();
+    public abstract void ChildOnDestroy();
     public abstract void ReachedCursorAction();
     public abstract bool CanSpawnWith(GameObject other);
     public abstract void HandleSpawn(GameObject other);
     public abstract bool HandleCollision(GameObject other);
 
     // Data members
-    protected Vector2Int facing;
-    protected Vector2Int gridPos;
-    protected float moveSpeed;
+    public Vector2Int facing;
+    public Vector2Int gridPos;
+    public float moveSpeed;
 
     // Used for movement
     private Rigidbody2D rigidBody;
@@ -35,7 +36,7 @@ public abstract class GridMover : MonoBehaviour, GridCollider {
 
         // First case is if we're aligned with the gridPos and needn't move,
         // we simply do nothing
-        if (Aligned() && cursor == gridPos) {
+        if (Stopped()) {
             return;
         }
 
@@ -63,15 +64,28 @@ public abstract class GridMover : MonoBehaviour, GridCollider {
             rigidBody.MovePosition(realPos + moveDelta);
         } else {
             rigidBody.MovePosition(gridPos);
-            ReachedCursorAction();
+            if (gridPos == cursor) {
+                ReachedCursorAction();
+            }
         }
 
+    }
+
+    // Deregisters itself on destruction
+    private void OnDestroy() {
+        MapController.DeregisterObject(gameObject);
+        ChildOnDestroy();
     }
 
     // Updates the location of the cursor by transforming it the given distance
     public void MoveCursor(Vector2Int delta) {
         cursor = gridPos;
         cursor += delta;
+    }
+
+    // Whether the object is stopped
+    public bool Stopped() {
+        return Aligned() && cursor == gridPos;
     }
 
     // Returns true if the real position is equal to gridPos

@@ -18,31 +18,14 @@ public static class MapController {
         }
     }
 
-    // Need to loop through the playable area and find the walls
-    public static void CaptureMap() {
-        Collider2D collision;
-        Vector2Int probe = new Vector2Int();
-        for (int x = 0; x <= Constants.width + 1; ++x) {
-            probe.x = x;
-            for (int y = 0; y <= Constants.height + 1; ++y) {
-                probe.y = y;
-                objects[x, y] = new List<GameObject>();
-                if (collision = Physics2D.OverlapPoint(probe, LayerMask.GetMask("Map"))) {
-                    RegisterObject(collision.gameObject, probe);
-                }
-            }
-        }
-
-    }
-
     // Registers the given GameObject with the coordinate manager so that collisions
     // and whatnot can be dealt with properly
     // Returns true if the object can be spawned there, false otherwise
     public static bool RegisterObject(GameObject obj, Vector2Int pos) {
 
         // If we have a GridCollider, need to make sure that we are allowed to spawn here
-        GridCollider collider;
-        if ((collider = obj.GetComponent<GridCollider>()) != null) {
+        GridMover collider;
+        if ((collider = obj.GetComponent<GridMover>()) != null) {
 
             // Determine if we can even spawn here
             for (int i = 0; i < objects[pos.x, pos.y].Count; ++i) {
@@ -80,7 +63,7 @@ public static class MapController {
         Vector2Int nextPos = currentPos + delta;
 
         bool canMove = true;
-        GridCollider collider = obj.GetComponent<GridCollider>();
+        GridMover collider = obj.GetComponent<GridMover>();
         for (int i = 0; i < objects[nextPos.x, nextPos.y].Count; ++i) {
             canMove &= collider.HandleCollision(objects[nextPos.x, nextPos.y][i]);
         }
