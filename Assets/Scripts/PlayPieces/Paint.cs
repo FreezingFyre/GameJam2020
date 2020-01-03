@@ -24,15 +24,12 @@ public class Paint : GridMover {
     public override void HandleSpawn(GameObject other) {
         if (other.tag == "Paint") {
             Destroy(other);
+        } else if (other.tag == "Player") {
+            Player player = other.GetComponent<Player>();
+            if (color != Constants.Color.NONE && color != player.color) {
+                player.ModifyHealth(Constants.paintDamage);
+            }
         }
-        //if (other.tag == "Player")
-        //{
-        //    var player = GetComponent<Player>();
-        //    if(color != Constants.Color.NONE && color != player.color)
-        //    {
-        //        player.ModifyHealth(Constants.paintDamage);
-        //    }
-        //}
     }
 
     // What to do when this object collides with other

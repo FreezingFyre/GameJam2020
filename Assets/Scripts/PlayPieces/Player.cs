@@ -58,6 +58,7 @@ public class Player : GridMover {
     // When the object reaches the cursor
     public override void ReachedCursorAction() {
         if (sliding) {
+            ModifyHealth(Constants.paintDamage);
             MoveCursor(movingDirection);
         } else if (axisDirection != Vector2Int.zero) {
             movingDirection = axisDirection;
