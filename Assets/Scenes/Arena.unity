@@ -396,6 +396,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: ff8a9aaaa663bc14fb51ca2a00404eb9, type: 3}
+=======
+    - target: {fileID: 2037886979966139012, guid: 6295c9c090719ca4b85b5dcec8b11164,
+        type: 3}
+      propertyPath: Animator
+      value: 
+      objectReference: {fileID: 1613425669}
+    - target: {fileID: 2037886979966139012, guid: 6295c9c090719ca4b85b5dcec8b11164,
+        type: 3}
+      propertyPath: SpriteRenderer
+      value: 
+      objectReference: {fileID: 1613425667}
+    - target: {fileID: 7919916144333788602, guid: 6295c9c090719ca4b85b5dcec8b11164,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6295c9c090719ca4b85b5dcec8b11164, type: 3}
+>>>>>>> master
