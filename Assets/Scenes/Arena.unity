@@ -152,12 +152,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 2048788571}
   MapChunks:
-  - {fileID: 5520851049041160333, guid: 2a7c2efa03d72974eb81c0eca6e49081, type: 3}
   - {fileID: 7194888796815842044, guid: 7b03472641de1d54b8293136708fe9ae, type: 3}
   - {fileID: 595584278868360690, guid: f2d253f0dcc00574aa9ebfd0848d6ff1, type: 3}
   - {fileID: 6724665623126759944, guid: 9d4e49e88e91d1643b356e74ee67fc7c, type: 3}
   - {fileID: 2652172855647344942, guid: 5e35f7b5a10029b41b8f8e2467a6c393, type: 3}
   - {fileID: 833714523784053088, guid: 97913f079ea4f274a920cbf54fde50ae, type: 3}
+  - {fileID: 2652172855647344942, guid: 8031963a0d055eb4087a7be9ccb999cc, type: 3}
 --- !u!4 &328129546
 Transform:
   m_ObjectHideFlags: 0
@@ -251,7 +251,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

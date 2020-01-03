@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3406799373111505521
+--- !u!1001 &7516624250283487651
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -64,33 +64,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5520851049041160332, guid: 2a7c2efa03d72974eb81c0eca6e49081,
         type: 3}
-      propertyPath: Shape.Array.data[2]
-      value: X0XXX
-      objectReference: {fileID: 0}
-    - target: {fileID: 5520851049041160332, guid: 2a7c2efa03d72974eb81c0eca6e49081,
-        type: 3}
-      propertyPath: Shape.Array.data[0]
-      value: X0X00
-      objectReference: {fileID: 0}
-    - target: {fileID: 5520851049041160332, guid: 2a7c2efa03d72974eb81c0eca6e49081,
-        type: 3}
-      propertyPath: Shape.Array.data[1]
-      value: X0X00
-      objectReference: {fileID: 0}
-    - target: {fileID: 5520851049041160332, guid: 2a7c2efa03d72974eb81c0eca6e49081,
-        type: 3}
       propertyPath: Shape.Array.data[3]
-      value: X0000
+      value: X000X
       objectReference: {fileID: 0}
     - target: {fileID: 5520851049041160332, guid: 2a7c2efa03d72974eb81c0eca6e49081,
         type: 3}
       propertyPath: Shape.Array.data[4]
+      value: X000X
+      objectReference: {fileID: 0}
+    - target: {fileID: 5520851049041160332, guid: 2a7c2efa03d72974eb81c0eca6e49081,
+        type: 3}
+      propertyPath: Shape.Array.data[2]
       value: XXXXX
+      objectReference: {fileID: 0}
+    - target: {fileID: 5520851049041160332, guid: 2a7c2efa03d72974eb81c0eca6e49081,
+        type: 3}
+      propertyPath: Shape.Array.data[1]
+      value: 00X00
+      objectReference: {fileID: 0}
+    - target: {fileID: 5520851049041160332, guid: 2a7c2efa03d72974eb81c0eca6e49081,
+        type: 3}
+      propertyPath: Shape.Array.data[0]
+      value: 00X00
       objectReference: {fileID: 0}
     - target: {fileID: 5520851049041160333, guid: 2a7c2efa03d72974eb81c0eca6e49081,
         type: 3}
       propertyPath: m_Name
-      value: Chunk (1) Variant
+      value: Chunk (6) Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a7c2efa03d72974eb81c0eca6e49081, type: 3}

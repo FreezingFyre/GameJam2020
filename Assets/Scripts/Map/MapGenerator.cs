@@ -11,6 +11,7 @@ public class MapGenerator : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
 
+        GameObject border = Resources.Load("Prefabs/WallBlack") as GameObject;
         GameObject wall = Resources.Load("Prefabs/Wall") as GameObject;
         GameObject floor = Resources.Load("Prefabs/Floor") as GameObject;
         GameObject paint = Resources.Load("Prefabs/Paint") as GameObject;
@@ -20,19 +21,19 @@ public class MapGenerator : MonoBehaviour {
         int rightBorder = Constants.width + 1;
 
         // Instantiate the four corners
-        Instantiate(wall, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
-        Instantiate(wall, new Vector3(rightBorder, 0.0f, 0.0f), Quaternion.identity);
-        Instantiate(wall, new Vector3(0.0f, topBorder, 0.0f), Quaternion.identity);
-        Instantiate(wall, new Vector3(rightBorder, topBorder, 0.0f), Quaternion.identity);
+        Instantiate(border, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+        Instantiate(border, new Vector3(rightBorder, 0.0f, 0.0f), Quaternion.identity);
+        Instantiate(border, new Vector3(0.0f, topBorder, 0.0f), Quaternion.identity);
+        Instantiate(border, new Vector3(rightBorder, topBorder, 0.0f), Quaternion.identity);
 
         // Instantiate the blocks at the borders
         for (int i = 1; i < rightBorder; ++i) {
-            Instantiate(wall, new Vector3(i, 0.0f, 0.0f), Quaternion.identity);
-            Instantiate(wall, new Vector3(i, topBorder, 0.0f), Quaternion.identity);
+            Instantiate(border, new Vector3(i, 0.0f, 0.0f), Quaternion.identity);
+            Instantiate(border, new Vector3(i, topBorder, 0.0f), Quaternion.identity);
         }
         for (int i = 1; i < topBorder; ++i) {
-            Instantiate(wall, new Vector3(0.0f, i, 0.0f), Quaternion.identity);
-            Instantiate(wall, new Vector3(rightBorder, i, 0.0f), Quaternion.identity);
+            Instantiate(border, new Vector3(0.0f, i, 0.0f), Quaternion.identity);
+            Instantiate(border, new Vector3(rightBorder, i, 0.0f), Quaternion.identity);
         }
 
         for (int x = 1; x < rightBorder; ++x)

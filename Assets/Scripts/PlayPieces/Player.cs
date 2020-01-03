@@ -139,7 +139,7 @@ public class Player : GridMover {
 
     public void OnBomb(InputValue input) {
         Bomb bomb = Instantiate(paintBomb, (Vector2)(gridPos + facing), Quaternion.identity).GetComponent<Bomb>();
-        bomb.Init(color, 2, 4);
+        bomb.Init(color, Constants.bombFuse, Constants.bombDistance);
     }
 
     Vector2Int AxesToDirection(InputValue input) {
