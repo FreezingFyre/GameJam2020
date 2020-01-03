@@ -36,6 +36,7 @@ public class PushEffect : GridMover {
             return false;
         } else if (other.tag == "Player") {
             Player player = other.GetComponent<Player>();
+            player.ModifyHealth(Constants.pushDamage);
             player.StopSliding();
             player.MoveCursor(direction * 2);
             return false;

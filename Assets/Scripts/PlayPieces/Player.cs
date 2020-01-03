@@ -1,11 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : GridMover {
 
     public Constants.Color color;
+    public event EventHandler HealthModified;
 
     private Vector2Int axisDirection;
     private Vector2Int movingDirection;
@@ -15,6 +18,9 @@ public class Player : GridMover {
     bool facingOverride;
     private int playerNumber;
     private GameObject paintBomb;
+    private float health = 100f;
+
+    public float Health { get { return health; } set { } }
 
     // Start is called before the first frame update
     public override void ChildStart() {
@@ -89,6 +95,7 @@ public class Player : GridMover {
             StopSliding();
             return false;
         } else if (other.tag == "PushEffect") {
+            ModifyHealth(Constants.pushDamage);
             StopSliding();
             PushEffect push = other.GetComponent<PushEffect>();
             MoveCursor(push.direction * 2 + (pos - gridPos));
@@ -101,8 +108,8 @@ public class Player : GridMover {
     }
 
     // OnMove sets the internal notion of which way the joystick is pointing
-    public void OnMove(InputValue input) {
-        Vector2 axes = input.Get<Vector2>();
+    public void OnMove(Vector2 input) {
+        Vector2 axes = input; 
         if (axes.x != 0.0f || axes.y != 0.0f) {
             if (Mathf.Abs(axes.x) > Mathf.Abs(axes.y)) {
                 axisDirection = (axes.x > 0) ? Vector2Int.right : Vector2Int.left;
@@ -198,6 +205,38 @@ public class Player : GridMover {
             movingDirection = Vector2Int.zero;
             Animator.SetFloat("MoveModifier", 0f);
         }
+    }
+
+    
+
+    public void ModifyHealth(float delta)
+    {
+        if (health == 0)
+        {
+            return;
+        }
+        if (health + delta > 100) health = 100;
+        else if (health + delta <= 0)
+        {
+            health = 0;
+            
+        }
+        else health += delta;
+
+        HealthModified?.Invoke(this, EventArgs.Empty);
+        if (health == 0) {
+            --PlayController.TotalPlayers;
+            Destroy(gameObject);
+            if (PlayController.TotalPlayers == 1)
+            {
+                StartCoroutine(GameEnd());
+            }
+        }
+    }
+
+    IEnumerator GameEnd() {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("MainMenu");
     }
 
 }

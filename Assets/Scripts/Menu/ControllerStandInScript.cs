@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ControllerStandInScript : MonoBehaviour
 {
     private bool split = false;
+    private bool awoken = false;
     private InputDevice controller;
 
     public GameObject Left;
@@ -46,11 +47,12 @@ public class ControllerStandInScript : MonoBehaviour
 
         PlayController.TotalRegistered++;
         PlayController.TotalPlayers++;
+        awoken = true;
     }
     
     void OnSplit(InputValue input)
     {
-        if(!split)
+        if(!split && awoken)
         {
             PlayController.ControllerToPlayers[controller].Add(PlayController.TotalPlayers);
             SetColorRight(Constants.paintColors[PlayController.TotalPlayers]);
