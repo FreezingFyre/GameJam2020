@@ -28,7 +28,7 @@ public class Paint : GridMover {
     }
 
     // What to do when this object collides with other
-    public override bool HandleCollision(GameObject other) {
+    public override bool HandleCollision(GameObject other, Vector2Int pos) {
         return false;
     }
 

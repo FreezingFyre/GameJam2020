@@ -69,7 +69,7 @@ public static class MapController {
         bool canMove = true;
         GridMover collider = obj.GetComponent<GridMover>();
         for (int i = 0; i < objects[nextPos.x, nextPos.y].Count; ++i) {
-            canMove &= collider.HandleCollision(objects[nextPos.x, nextPos.y][i]);
+            canMove &= collider.HandleCollision(objects[nextPos.x, nextPos.y][i], nextPos);
         }
 
         if (canMove) {

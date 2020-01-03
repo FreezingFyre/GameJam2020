@@ -30,7 +30,7 @@ public class PushEffect : GridMover {
     public override void HandleSpawn(GameObject other) {}
 
     // What to do when this object collides with other
-    public override bool HandleCollision(GameObject other) {
+    public override bool HandleCollision(GameObject other, Vector2Int pos) {
 
         if (other.tag == "Wall") {
             return false;

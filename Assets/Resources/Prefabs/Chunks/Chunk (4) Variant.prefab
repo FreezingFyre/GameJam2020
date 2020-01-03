@@ -65,12 +65,32 @@ PrefabInstance:
     - target: {fileID: 5520851049041160332, guid: 2a7c2efa03d72974eb81c0eca6e49081,
         type: 3}
       propertyPath: Shape.Array.data[3]
-      value: XX000
+      value: 00X00
+      objectReference: {fileID: 0}
+    - target: {fileID: 5520851049041160332, guid: 2a7c2efa03d72974eb81c0eca6e49081,
+        type: 3}
+      propertyPath: Shape.Array.data[4]
+      value: 00X00
+      objectReference: {fileID: 0}
+    - target: {fileID: 5520851049041160332, guid: 2a7c2efa03d72974eb81c0eca6e49081,
+        type: 3}
+      propertyPath: Shape.Array.data[2]
+      value: XXXXX
+      objectReference: {fileID: 0}
+    - target: {fileID: 5520851049041160332, guid: 2a7c2efa03d72974eb81c0eca6e49081,
+        type: 3}
+      propertyPath: Shape.Array.data[1]
+      value: X000X
+      objectReference: {fileID: 0}
+    - target: {fileID: 5520851049041160332, guid: 2a7c2efa03d72974eb81c0eca6e49081,
+        type: 3}
+      propertyPath: Shape.Array.data[0]
+      value: X000X
       objectReference: {fileID: 0}
     - target: {fileID: 5520851049041160333, guid: 2a7c2efa03d72974eb81c0eca6e49081,
         type: 3}
       propertyPath: m_Name
-      value: Chunk (4)
+      value: Chunk (4) Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a7c2efa03d72974eb81c0eca6e49081, type: 3}

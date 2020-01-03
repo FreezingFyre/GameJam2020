@@ -59,7 +59,7 @@ public class Player : GridMover {
 
     public override void HandleSpawn(GameObject other) {}
 
-    public override bool HandleCollision(GameObject other) {
+    public override bool HandleCollision(GameObject other, Vector2Int pos) {
 
         if (other.tag == "Wall" || other.tag == "Player") {
             StopSliding();
@@ -84,8 +84,9 @@ public class Player : GridMover {
         } else if (other.tag == "PushEffect") {
             StopSliding();
             PushEffect push = other.GetComponent<PushEffect>();
-            MoveCursor(push.direction * 2);
-            return false;
+            MoveCursor(push.direction * 2 + (pos - gridPos));
+            Destroy(other);
+            return true;
         } else {
             return true;
         }
@@ -139,7 +140,7 @@ public class Player : GridMover {
 
     public void OnBomb(InputValue input) {
         Bomb bomb = Instantiate(paintBomb, (Vector2)(gridPos + facing), Quaternion.identity).GetComponent<Bomb>();
-        bomb.Init(color, 2, 4);
+        bomb.Init(color, Constants.bombFuse, Constants.bombDistance);
     }
 
     Vector2Int AxesToDirection(InputValue input) {

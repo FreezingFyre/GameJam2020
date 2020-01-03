@@ -11,7 +11,7 @@ public abstract class GridMover : MonoBehaviour {
     public abstract void ReachedCursorAction();
     public abstract bool CanSpawnWith(GameObject other);
     public abstract void HandleSpawn(GameObject other);
-    public abstract bool HandleCollision(GameObject other);
+    public abstract bool HandleCollision(GameObject other, Vector2Int pos);
 
     // Data members
     public Vector2Int facing;

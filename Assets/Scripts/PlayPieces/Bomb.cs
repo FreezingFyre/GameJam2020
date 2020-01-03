@@ -42,7 +42,7 @@ public class Bomb : GridMover {
     }
 
     // What to do when this object collides with other
-    public override bool HandleCollision(GameObject other) {
+    public override bool HandleCollision(GameObject other, Vector2Int pos) {
         if (other.tag == "Wall" || other.tag == "Player" || other.tag == "Bomb") {
             return false;
         }

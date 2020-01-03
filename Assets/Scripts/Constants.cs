@@ -73,7 +73,10 @@ public static class Constants {
     public const float playerSpeed = 5.5f;
     public const float bombPaintEmitterSpeed = 30.0f;
     public const float bombSlidingSpeed = 7.0f;
-    public const float bombPushEffectSpeed = 3.0f;
+    public const float bombPushEffectSpeed = 4.5f;
     public const float playerSlidingSpeed = 7.0f;
+
+    public const float bombFuse = 2.0f;
+    public const int bombDistance = 7;
 
 }

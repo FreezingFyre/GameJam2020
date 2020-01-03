@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Shape:
-  - 00X00
   - 00000
-  - 00XX0
+  - 00000
+  - 00000
   - 00000
   - 00000
