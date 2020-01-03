@@ -93,7 +93,7 @@ public class Player : GridMover {
     }
 
     // OnMove sets the internal notion of which way the joystick is pointing
-    void OnMove(InputValue input) {
+    public void OnMove(InputValue input) {
         Vector2 axes = input.Get<Vector2>();
         if (axes.x != 0.0f || axes.y != 0.0f) {
             if (Mathf.Abs(axes.x) > Mathf.Abs(axes.y)) {
@@ -112,7 +112,17 @@ public class Player : GridMover {
         }
     }
 
-    void OnLook(InputValue input) {
+    public void OnTrap(InputValue input)
+    {
+        return;
+    }
+
+    public void OnShoot(InputValue input)
+    {
+        return;
+    }
+
+    public void OnLook(InputValue input) {
         Vector2Int direction = AxesToDirection(input);
         facingOverride = (direction != Vector2Int.zero);
         if (facingOverride) {
@@ -120,14 +130,14 @@ public class Player : GridMover {
         }
     }
 
-    void OnStoppedLook(InputValue input) {
+    public void OnStoppedLook(InputValue input) {
         if (movingDirection == Vector2Int.zero && !facingOverride) {
             Vector2Int direction = AxesToDirection(input);
             SetFacing(direction);
         }
     }
 
-    void OnBomb(InputValue input) {
+    public void OnBomb(InputValue input) {
         Bomb bomb = Instantiate(paintBomb, (Vector2)(gridPos + facing), Quaternion.identity).GetComponent<Bomb>();
         bomb.Init(color, 2, 4);
     }
@@ -145,7 +155,7 @@ public class Player : GridMover {
         }
     }
 
-    void SetFacing(Vector2Int direction) {
+    public void SetFacing(Vector2Int direction) {
         if (direction == Vector2Int.right) {
             SpriteRenderer.flipX = true;
             Animator.Play("Move_Horizontal");

@@ -130,6 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 328129546}
   - component: {fileID: 328129545}
+  - component: {fileID: 328129547}
   m_Layer: 0
   m_Name: MapGenerator
   m_TagString: Untagged
@@ -150,6 +151,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 2048788571}
+  MapChunks:
+  - {fileID: 5520851049041160333, guid: 2a7c2efa03d72974eb81c0eca6e49081, type: 3}
+  - {fileID: 7194888796815842044, guid: 7b03472641de1d54b8293136708fe9ae, type: 3}
+  - {fileID: 595584278868360690, guid: f2d253f0dcc00574aa9ebfd0848d6ff1, type: 3}
+  - {fileID: 6724665623126759944, guid: 9d4e49e88e91d1643b356e74ee67fc7c, type: 3}
+  - {fileID: 2652172855647344942, guid: 5e35f7b5a10029b41b8f8e2467a6c393, type: 3}
+  - {fileID: 833714523784053088, guid: 97913f079ea4f274a920cbf54fde50ae, type: 3}
 --- !u!4 &328129546
 Transform:
   m_ObjectHideFlags: 0
@@ -164,39 +172,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &351489694
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 351489696}
-  - component: {fileID: 351489695}
-  m_Layer: 0
-  m_Name: InputControllerManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &351489695
+--- !u!114 &328129547
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 351489694}
+  m_GameObject: {fileID: 328129544}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_NotificationBehavior: 0
-  m_MaxPlayerCount: -1
+  m_MaxPlayerCount: 4
   m_AllowJoining: 1
-  m_JoinBehavior: 0
+  m_JoinBehavior: 2
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -214,8 +205,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 1732790492164875018, guid: 6295c9c090719ca4b85b5dcec8b11164,
-    type: 3}
+  m_PlayerPrefab: {fileID: 0}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1
@@ -225,20 +215,6 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!4 &351489696
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 351489694}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2048788569
 GameObject:
   m_ObjectHideFlags: 0
