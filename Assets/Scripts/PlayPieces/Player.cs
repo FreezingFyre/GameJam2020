@@ -61,7 +61,11 @@ public class Player : GridMover {
 
     public override bool HandleCollision(GameObject other, Vector2Int pos) {
 
-        if (other.tag == "Wall" || other.tag == "Player") {
+        if (other.tag == "Wall") {
+            StopSliding();
+            return false;
+        } else if (other.tag == "Player"){
+            other.GetComponent<Player>().StopSliding();
             StopSliding();
             return false;
         } else if (other.tag == "Paint") {
@@ -77,6 +81,9 @@ public class Player : GridMover {
 
         } else if (other.tag == "Bomb") {
             StopSliding();
+            if (other.GetComponent<Bomb>().color == color) {
+                other.GetComponent<Bomb>().Push(pos - gridPos);
+            }
             return false;
         } else if (other.tag == "Spike") {
             StopSliding();
