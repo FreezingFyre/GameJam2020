@@ -63,6 +63,31 @@ public static class Constants {
         new Vector2Int((int)(1f/3f*width), 1)
     };
 
+    public static Vector3[] playerDeath = new[]
+   {
+        new Vector3(0,0),
+        new Vector3(width+1, height+1),
+        new Vector3(0, height+1),
+        new Vector3(width+1, 0),
+        new Vector3((int)(1f/3f*width+1), height+1),
+        new Vector3((int)(2f/3f*width-1), 0),
+        new Vector3((int)(2f/3f*width-1), height+1),
+        new Vector3((int)(1f/3f*width+1), 0)
+    };
+
+
+    public static Vector3[] healthBarSpawns = new[]
+    {
+        new Vector3(200,-10,0),
+        new Vector3(1610, 985, 0),
+        new Vector3(200, 985, 0),
+        new Vector3(1610,-10, 0),
+        new Vector3(100+ 1f/3f*1610, 985, 0),
+        new Vector3(100+ 2f/3f*1610, -10, 0),
+        new Vector3(100+ 2f/3f*1610, 985, 0),
+        new Vector3(100+ 1f/3f*1610, -10, 0)
+    };
+
     public static int totalPlayers;
 
     public const int width = 25;
@@ -70,11 +95,15 @@ public static class Constants {
 
     public const float autogenWallRate = 0.0f;
 
+    public const float pushDamage = -10f;
+    public const float paintDamage = -1f;
     public const float playerSpeed = 5.5f;
     public const float bombPaintEmitterSpeed = 30.0f;
     public const float bombSlidingSpeed = 7.0f;
     public const float bombPushEffectSpeed = 4.5f;
     public const float playerSlidingSpeed = 7.0f;
+
+    public const float maxHealth = 100f;
 
     public const float bombFuse = 2.0f;
     public const int bombDistance = 7;
