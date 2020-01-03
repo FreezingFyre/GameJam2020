@@ -50,11 +50,18 @@ public class InputMapper : MonoBehaviour
             player.GetComponent<Player>().OnLook(input);
         }
     }
-    void OnShoot(InputValue input)
+    void OnShootPress(InputValue input)
     {
         foreach (var player in playerChildren)
         {
-            player.GetComponent<Player>().OnShoot(input);
+            player.GetComponent<Player>().OnShootPress(input);
+        }
+    }
+    void OnShootRelease(InputValue input)
+    {
+        foreach (var player in playerChildren)
+        {
+            player.GetComponent<Player>().OnShootRelease(input);
         }
     }
     void OnBomb(InputValue input)
@@ -81,9 +88,13 @@ public class InputMapper : MonoBehaviour
     {
         playerChildren[1].GetComponent<Player>().OnStoppedLook(input);
     }
-    void OnRightShoot(InputValue input)
+    void OnRightShootPress(InputValue input)
     {
-        playerChildren[1].GetComponent<Player>().OnShoot(input);
+        playerChildren[1].GetComponent<Player>().OnShootPress(input);
+    }
+    void OnRightShootRelease(InputValue input)
+    {
+        playerChildren[1].GetComponent<Player>().OnShootRelease(input);
     }
     void OnRightBomb(InputValue input)
     {
@@ -103,9 +114,13 @@ public class InputMapper : MonoBehaviour
     {
         playerChildren[0].GetComponent<Player>().OnStoppedLook(input);
     }
-    void OnLeftShoot(InputValue input)
+    void OnLeftShootPress(InputValue input)
     {
-        playerChildren[0].GetComponent<Player>().OnShoot(input);
+        playerChildren[0].GetComponent<Player>().OnShootPress(input);
+    }
+    void OnLeftShootRelease(InputValue input)
+    {
+        playerChildren[0].GetComponent<Player>().OnShootRelease(input);
     }
     void OnLeftBomb(InputValue input)
     {

@@ -78,5 +78,9 @@ public static class Constants {
 
     public const float bombFuse = 2.0f;
     public const int bombDistance = 7;
+    public const float bombDelay = 1.5f;
+
+    public const float secondsPerGunUnit = 0.3f;
+    public const int maxGunUnit = 5;
 
 }
