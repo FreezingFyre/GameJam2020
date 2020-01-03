@@ -12,6 +12,7 @@ TagManager:
   - Spike
   - PushEffect
   - PaintEmitter
+  - UIPlayCanvas
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - AboveUI
   - 
   - 
   - 

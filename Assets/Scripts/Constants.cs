@@ -51,11 +51,24 @@ public static class Constants {
         NONE
     };
 
+    public static Vector2Int[] playerSpawns = new[]
+    {
+        new Vector2Int(1,1),
+        new Vector2Int(width, height),
+        new Vector2Int(1, height),
+        new Vector2Int(width, 1),
+        new Vector2Int((int)(1f/3f*width), height),
+        new Vector2Int((int)(2f/3f*width), 1),
+        new Vector2Int((int)(2f/3f*width), height),
+        new Vector2Int((int)(1f/3f*width), 1)
+    };
+
+    public static int totalPlayers;
 
     public const int width = 25;
     public const int height = 13;
 
-    public const float autogenWallRate = 0.2f;
+    public const float autogenWallRate = 0.0f;
 
     public const float playerSpeed = 5.5f;
     public const float bombPaintEmitterSpeed = 30.0f;

@@ -51,8 +51,11 @@ public static class MapController {
 
     // Removes the given object from being managed by the MapController
     public static void DeregisterObject(GameObject obj) {
-        objects[positions[obj].x, positions[obj].y].Remove(obj);
-        positions.Remove(obj);
+        if (positions.ContainsKey(obj))
+        {
+            objects[positions[obj].x, positions[obj].y].Remove(obj);
+            positions.Remove(obj);
+        }
     }
 
     // Used to set a new position for the given GameObject, with delta being

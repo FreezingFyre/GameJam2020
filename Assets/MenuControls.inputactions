@@ -1,0 +1,74 @@
+{
+    "name": "MenuControls",
+    "maps": [
+        {
+            "name": "Play",
+            "id": "c3fe5999-e141-422f-9b5b-9c4ca5c72d62",
+            "actions": [
+                {
+                    "name": "Split",
+                    "type": "Button",
+                    "id": "c59b091e-e0a2-4b12-a172-f5dc7d7b7043",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Join",
+                    "type": "Button",
+                    "id": "d029647b-4b07-44d9-b0d4-8faeba91d0cf",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2ba3b901-f697-407e-b08c-d435bb648e76",
+                    "path": "<XInputController>/buttonNorth",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Split",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "304f1f79-5073-4a23-a5b1-aba65db8b5c4",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Split",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a80030a9-5920-4fcd-8fa4-5ff818c349ed",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b9640458-5a9c-4384-a747-d830ab6aade0",
+                    "path": "<XInputController>/buttonWest",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
